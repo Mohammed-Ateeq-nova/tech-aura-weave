@@ -153,13 +153,6 @@ export const Contact = () => {
           </div>
         </div>
       </div>
-      
-      {/* Footer */}
-      <div className="mt-20 pt-8 border-t border-gray-600/30 text-center">
-        <p className="text-gray-400 font-tech">
-          © 2024 Mohammed Ateeq. Built with ❤️ and cutting-edge tech.
-        </p>
-      </div>
     </section>
   );
 };
