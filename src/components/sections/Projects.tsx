@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { ExternalLink, Github, Award, TrendingUp, Clock } from 'lucide-react';
+import { ExternalLink, Github, Award, TrendingUp, Clock, Globe, Zap } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -24,6 +23,50 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
+    title: 'Sri Datta Electronics Marketing Hub',
+    description: 'Modern e-commerce platform with 3D product previews, AI-powered search, and server-side rendering for optimal performance.',
+    detailedDescription: 'Designed and developed a modern e-commerce platform for Sri Datta Electronics, showcasing products with dynamic filtering and seamless UX. Features TSX + Next.js for server-side rendering, interactive 3D product previews using Three.js, and AI-powered search with NLP-based intent recognition.',
+    tech: ['TypeScript', 'Next.js', 'React', 'Three.js', 'TailwindCSS', 'Firebase', 'TensorFlow.js'],
+    achievements: [
+      '95% Lighthouse performance scores',
+      'Interactive 3D Product Previews with zoom/rotate',
+      'AI-powered search with NLP intent recognition',
+      'Firebase-backed CMS with role-based access'
+    ],
+    image: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=500',
+    demoUrl: '#',
+    githubUrl: '#',
+    featured: true,
+    metrics: [
+      { icon: <Award className="w-4 h-4" />, label: 'Performance', value: '95%', color: 'text-green-400' },
+      { icon: <Zap className="w-4 h-4" />, label: '3D Models', value: 'Interactive', color: 'text-blue-400' },
+      { icon: <TrendingUp className="w-4 h-4" />, label: 'AI Search', value: 'NLP-Based', color: 'text-purple-400' }
+    ]
+  },
+  {
+    id: 2,
+    title: 'Animal Species Classification',
+    description: 'Deep learning model classifying 50+ animal species with 94% accuracy, deployed as an interactive web application.',
+    detailedDescription: 'Built a deep learning model to classify 50+ animal species with 94% accuracy, deployed as a web app. Features MobileNetV3 fine-tuning for edge deployment, real-time web demo with Streamlit, and curated dataset of 12,000+ images with OpenCV augmentation.',
+    tech: ['Python', 'TensorFlow', 'CNN', 'MobileNetV3', 'Streamlit', 'OpenCV', 'Heroku'],
+    achievements: [
+      '94% classification accuracy across 50+ species',
+      '40% model size reduction without accuracy loss',
+      '12,000+ curated and augmented images',
+      'Real-time web demo with instant predictions'
+    ],
+    image: 'https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=500',
+    demoUrl: '#',
+    githubUrl: '#',
+    featured: true,
+    metrics: [
+      { icon: <Award className="w-4 h-4" />, label: 'Accuracy', value: '94%', color: 'text-green-400' },
+      { icon: <Globe className="w-4 h-4" />, label: 'Species', value: '50+', color: 'text-blue-400' },
+      { icon: <TrendingUp className="w-4 h-4" />, label: 'Size Reduction', value: '40%', color: 'text-purple-400' }
+    ]
+  },
+  {
+    id: 3,
     title: 'Face Liveness Detection System',
     description: 'Advanced AI-powered system for real-time face liveness detection using computer vision and machine learning algorithms.',
     detailedDescription: 'Developed a sophisticated face liveness detection system using MobileNetV3 architecture with TensorFlow and ONNX.js for web deployment. The system achieves high accuracy while maintaining optimal performance through model optimization techniques.',
@@ -36,7 +79,7 @@ const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500',
     demoUrl: '#',
     githubUrl: '#',
-    featured: true,
+    featured: false,
     metrics: [
       { icon: <Award className="w-4 h-4" />, label: 'Accuracy', value: '92%', color: 'text-green-400' },
       { icon: <TrendingUp className="w-4 h-4" />, label: 'Size Reduction', value: '75%', color: 'text-blue-400' },
@@ -44,7 +87,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 2,
+    id: 4,
     title: 'Exam Hall Allotment System',
     description: 'Automated system for efficient exam hall seat allocation using Java and Oracle SQL database management.',
     detailedDescription: 'Built a comprehensive exam hall management system that automates the entire seat allocation process. The system handles student data, exam schedules, and room capacity optimization to ensure fair and efficient seating arrangements.',
@@ -57,7 +100,7 @@ const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500',
     demoUrl: '#',
     githubUrl: '#',
-    featured: true,
+    featured: false,
     metrics: [
       { icon: <Award className="w-4 h-4" />, label: 'Seats Managed', value: '500+', color: 'text-green-400' },
       { icon: <TrendingUp className="w-4 h-4" />, label: 'Efficiency Gain', value: '60%', color: 'text-blue-400' },
@@ -65,7 +108,7 @@ const projects: Project[] = [
     ]
   },
   {
-    id: 3,
+    id: 5,
     title: 'Morse Code Translator',
     description: 'Real-time Morse code translation application with high accuracy and user-friendly interface.',
     detailedDescription: 'Developed a comprehensive Morse code translator that converts text to Morse code and vice versa. Features include audio playback, visual representation, and batch processing capabilities.',
@@ -206,7 +249,7 @@ export const Projects = () => {
         </div>
         
         {/* Other Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.filter(p => !p.featured).map((project) => (
             <div
               key={project.id}
