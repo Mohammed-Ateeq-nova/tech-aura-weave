@@ -35,7 +35,7 @@ export const Hero = () => {
     >
       {/* Floating 3D Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
             className={`absolute w-4 h-4 bg-neon-blue rounded-sm animate-float opacity-20`}
@@ -67,16 +67,32 @@ export const Hero = () => {
             </h2>
           </div>
           
-          {/* Typewriter Effect */}
+          {/* Professional Subtitle */}
           <div className="text-xl md:text-2xl text-gray-300 font-tech relative">
             <span className="inline-block animate-typewriter overflow-hidden whitespace-nowrap border-r-2 border-neon-green">
-              Full Stack Developer & AI Specialist
+              B.Tech in Computer Science | Data & Full-Stack Developer
             </span>
+          </div>
+
+          {/* Bio */}
+          <div className="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 font-tech leading-relaxed animate-fade-in">
+            <p className="glass-effect rounded-lg p-6 border border-gray-600/30">
+              Passionate about optimizing systems, building AI models, and creating seamless user experiences. 
+              Experienced in developing cutting-edge solutions that bridge the gap between complex algorithms and intuitive interfaces.
+            </p>
+          </div>
+          
+          {/* Education Highlight */}
+          <div className="flex flex-wrap justify-center gap-4 mt-8">
+            <div className="glass-effect rounded-full px-6 py-3 border border-neon-blue/30 hover:bg-neon-blue/10 transition-all duration-300 animate-float">
+              <span className="text-neon-blue font-tech font-semibold">🎓 Anurag University</span>
+              <span className="text-gray-300 font-tech ml-2">CGPA: 8.88</span>
+            </div>
           </div>
           
           {/* Tech Stack Pills */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">
-            {['React', 'Node.js', 'Python', 'AI/ML', 'MongoDB', 'Next.js'].map((tech, index) => (
+            {['Python', 'React', 'AI/ML', 'MongoDB', 'TensorFlow', 'Java'].map((tech, index) => (
               <span 
                 key={tech}
                 className="px-4 py-2 glass-effect rounded-full text-sm font-tech text-neon-blue border border-neon-blue/30 hover:bg-neon-blue/10 transition-all duration-300 animate-float"
@@ -89,11 +105,14 @@ export const Hero = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-            <button className="px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-tech font-semibold rounded-lg neon-border hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-neon-blue/50">
+            <button 
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-4 bg-gradient-to-r from-neon-blue to-neon-purple text-white font-tech font-semibold rounded-lg neon-border hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-neon-blue/50"
+            >
               Explore My Work
             </button>
             <button className="px-8 py-4 glass-effect text-neon-green font-tech font-semibold rounded-lg border border-neon-green/50 hover:bg-neon-green/10 hover:scale-105 transition-all duration-300">
-              Download CV
+              Download Resume
             </button>
           </div>
         </div>
@@ -104,10 +123,12 @@ export const Hero = () => {
         </div>
       </div>
       
-      {/* 3D Floating Cubes */}
+      {/* 3D Floating Elements */}
       <div className="absolute top-1/4 left-10 w-16 h-16 bg-gradient-to-r from-neon-purple to-neon-blue rounded-lg animate-rotate-y opacity-50" />
       <div className="absolute top-3/4 right-10 w-12 h-12 bg-gradient-to-r from-neon-green to-neon-blue rounded-lg animate-float opacity-40" 
            style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/4 w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-float opacity-30"
+           style={{ animationDelay: '1s' }} />
     </section>
   );
 };

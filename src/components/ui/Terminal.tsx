@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Minus, Square } from 'lucide-react';
+import { X } from 'lucide-react';
 
 interface TerminalProps {
   onClose: () => void;
@@ -11,19 +11,25 @@ export const Terminal: React.FC<TerminalProps> = ({ onClose }) => {
   const [history, setHistory] = useState<string[]>([
     'Welcome to Mohammed Ateeq Terminal v2.0',
     'Type "help" for available commands.',
+    'Easter egg unlocked! 🎉',
     ''
   ]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const commands = {
-    help: 'Available commands: about, skills, projects, contact, clear, matrix, exit',
-    about: 'Mohammed Ateeq - Full Stack Developer & AI Specialist. Passionate about creating innovative solutions with cutting-edge technology.',
-    skills: 'React | Node.js | Python | AI/ML | MongoDB | AWS | Docker | TypeScript',
-    projects: 'Featured: Face Liveness Detection, E-Commerce Platform, Analytics Dashboard, Neural Network Visualizer',
-    contact: 'Email: mohammed.ateeq@email.com | Phone: +1 (555) 123-4567',
-    matrix: '🔴 Welcome to the Matrix, Neo. You have unlocked the hidden terminal!',
+    help: 'Available commands: about, education, skills, projects, leadership, certifications, achievements, contact, morse, matrix, clear, exit',
+    about: 'Mohammed Ateeq - B.Tech CSE | Data & Full-Stack Developer. CGPA: 8.88. Passionate about AI/ML and system optimization.',
+    education: 'Anurag University (B.Tech CSE, CGPA: 8.88) | Narayana College (94.5%) | SSC (GPA: 10.0)',
+    skills: 'Programming: Python, Java, C++, JavaScript | AI/ML: TensorFlow, Scikit-learn | Database: MongoDB, Oracle | Tools: Git, Figma, Tableau',
+    projects: 'Featured: Face Liveness Detection (92% accuracy), Exam Hall Allotment (500+ seats), Morse Code Translator (95% accuracy)',
+    leadership: 'Executive Chairperson - GeeksforGeeks | Organized Hacktivate (400+ participants) | Led 150+ coding questions | 200+ workshop attendees',
+    certifications: 'IBM Data Science Professional | MongoDB Developer | Java/Python (Infosys) | UiPath RPA Foundation',
+    achievements: '1st Place - Tech Hack III (Data Analytics) | Winner - Code Wars (200+ participants) | Runner-up - Code Maze (500+ participants)',
+    contact: 'LinkedIn: /in/mohammed-ateeq | GitHub: /mohammed-ateeq | Email: mohammed.ateeq@email.com',
+    morse: '-- --- .... .- -- -- . -..   .- - . . --.-   (Mohammed Ateeq in Morse Code!) 🎯',
+    matrix: '🔴 You have been disconnected from the Matrix. Welcome to reality, Neo! The red pill reveals: This portfolio showcases real skills, not just code.',
     clear: '',
-    exit: 'Goodbye! Thanks for exploring my portfolio.'
+    exit: 'Thank you for exploring my digital portfolio! Goodbye! 👋'
   };
 
   useEffect(() => {

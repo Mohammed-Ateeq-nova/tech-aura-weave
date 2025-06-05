@@ -1,8 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 import { Hero } from './sections/Hero';
+import { Education } from './sections/Education';
 import { Skills } from './sections/Skills';
 import { Projects } from './sections/Projects';
+import { Leadership } from './sections/Leadership';
+import { Certifications } from './sections/Certifications';
 import { Achievements } from './sections/Achievements';
 import { Contact } from './sections/Contact';
 import { Navigation } from './ui/Navigation';
@@ -34,6 +37,11 @@ export const Portfolio = () => {
       } else {
         konamiIndex = 0;
       }
+
+      // Alternative terminal trigger with ~ key
+      if (e.key === '~') {
+        setShowTerminal(true);
+      }
     };
 
     document.addEventListener('keydown', handleKeyDown);
@@ -50,8 +58,11 @@ export const Portfolio = () => {
       
       <main className="relative z-10">
         <Hero />
+        <Education />
         <Skills />
         <Projects />
+        <Leadership />
+        <Certifications />
         <Achievements />
         <Contact />
       </main>

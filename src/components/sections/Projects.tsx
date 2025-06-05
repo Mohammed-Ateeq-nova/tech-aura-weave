@@ -1,15 +1,24 @@
+
 import React, { useState } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Award, TrendingUp, Clock } from 'lucide-react';
 
 interface Project {
   id: number;
   title: string;
   description: string;
+  detailedDescription: string;
   tech: string[];
+  achievements: string[];
   image: string;
   demoUrl?: string;
   githubUrl?: string;
   featured: boolean;
+  metrics: {
+    icon: React.ReactNode;
+    label: string;
+    value: string;
+    color: string;
+  }[];
 }
 
 const projects: Project[] = [
@@ -17,41 +26,64 @@ const projects: Project[] = [
     id: 1,
     title: 'Face Liveness Detection System',
     description: 'Advanced AI-powered system for real-time face liveness detection using computer vision and machine learning algorithms.',
-    tech: ['Python', 'OpenCV', 'TensorFlow', 'React', 'Node.js'],
-    image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=500',
+    detailedDescription: 'Developed a sophisticated face liveness detection system using MobileNetV3 architecture with TensorFlow and ONNX.js for web deployment. The system achieves high accuracy while maintaining optimal performance through model optimization techniques.',
+    tech: ['Python', 'TensorFlow', 'MobileNetV3', 'ONNX.js', 'OpenCV', 'JavaScript'],
+    achievements: [
+      '92% accuracy in liveness detection',
+      '75% model size reduction through optimization',
+      '40% latency improvement for real-time processing'
+    ],
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500',
     demoUrl: '#',
     githubUrl: '#',
-    featured: true
+    featured: true,
+    metrics: [
+      { icon: <Award className="w-4 h-4" />, label: 'Accuracy', value: '92%', color: 'text-green-400' },
+      { icon: <TrendingUp className="w-4 h-4" />, label: 'Size Reduction', value: '75%', color: 'text-blue-400' },
+      { icon: <Clock className="w-4 h-4" />, label: 'Latency Improvement', value: '40%', color: 'text-purple-400' }
+    ]
   },
   {
     id: 2,
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with real-time inventory, payment processing, and admin dashboard.',
-    tech: ['Next.js', 'MongoDB', 'Stripe', 'Tailwind CSS'],
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500',
+    title: 'Exam Hall Allotment System',
+    description: 'Automated system for efficient exam hall seat allocation using Java and Oracle SQL database management.',
+    detailedDescription: 'Built a comprehensive exam hall management system that automates the entire seat allocation process. The system handles student data, exam schedules, and room capacity optimization to ensure fair and efficient seating arrangements.',
+    tech: ['Java', 'AWT', 'Oracle SQL', 'Database Design', 'Algorithm Optimization'],
+    achievements: [
+      'Automated 500+ seat allocations',
+      '60% reduction in manual effort',
+      'Zero conflicts in seat assignments'
+    ],
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500',
     demoUrl: '#',
     githubUrl: '#',
-    featured: true
+    featured: true,
+    metrics: [
+      { icon: <Award className="w-4 h-4" />, label: 'Seats Managed', value: '500+', color: 'text-green-400' },
+      { icon: <TrendingUp className="w-4 h-4" />, label: 'Efficiency Gain', value: '60%', color: 'text-blue-400' },
+      { icon: <Clock className="w-4 h-4" />, label: 'Process Time', value: '90% Faster', color: 'text-purple-400' }
+    ]
   },
   {
     id: 3,
-    title: 'Smart Analytics Dashboard',
-    description: 'Real-time data visualization dashboard with predictive analytics and machine learning insights.',
-    tech: ['React', 'D3.js', 'Python', 'FastAPI', 'PostgreSQL'],
-    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=500',
-    demoUrl: '#',
-    githubUrl: '#',
-    featured: false
-  },
-  {
-    id: 4,
-    title: 'Neural Network Visualizer',
-    description: 'Interactive tool for visualizing and understanding neural network architectures and training processes.',
-    tech: ['React', 'Three.js', 'Python', 'TensorFlow'],
+    title: 'Morse Code Translator',
+    description: 'Real-time Morse code translation application with high accuracy and user-friendly interface.',
+    detailedDescription: 'Developed a comprehensive Morse code translator that converts text to Morse code and vice versa. Features include audio playback, visual representation, and batch processing capabilities.',
+    tech: ['Java', 'AWT', 'Algorithm Design', 'UI/UX Design'],
+    achievements: [
+      '95% translation accuracy',
+      '100+ daily translations handled',
+      'Real-time audio feedback'
+    ],
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500',
     demoUrl: '#',
     githubUrl: '#',
-    featured: false
+    featured: false,
+    metrics: [
+      { icon: <Award className="w-4 h-4" />, label: 'Accuracy', value: '95%', color: 'text-green-400' },
+      { icon: <TrendingUp className="w-4 h-4" />, label: 'Daily Usage', value: '100+', color: 'text-blue-400' },
+      { icon: <Clock className="w-4 h-4" />, label: 'Response Time', value: '<1s', color: 'text-purple-400' }
+    ]
   }
 ];
 
@@ -66,7 +98,7 @@ export const Projects = () => {
             Project Showcase
           </h2>
           <p className="text-xl text-gray-300 font-tech max-w-2xl mx-auto">
-            Innovative solutions powered by cutting-edge technology
+            Innovative solutions demonstrating expertise in AI/ML, system optimization, and full-stack development
           </p>
         </div>
         
@@ -99,8 +131,38 @@ export const Projects = () => {
                 </h3>
                 
                 <p className="text-gray-300 font-tech mb-4 leading-relaxed">
-                  {project.description}
+                  {activeProject === project.id ? project.detailedDescription : project.description}
                 </p>
+
+                {/* Key Achievements */}
+                <div className="mb-4">
+                  <h4 className="text-sm font-tech font-semibold text-neon-green mb-2">Key Achievements:</h4>
+                  <ul className="space-y-1">
+                    {project.achievements.map((achievement, idx) => (
+                      <li key={idx} className="text-sm text-gray-400 font-tech flex items-center">
+                        <span className="w-1.5 h-1.5 bg-neon-green rounded-full mr-2"></span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Metrics */}
+                <div className="grid grid-cols-3 gap-4 mb-6">
+                  {project.metrics.map((metric, idx) => (
+                    <div key={idx} className="text-center glass-effect rounded-lg p-3 border border-gray-700/30">
+                      <div className={`flex items-center justify-center mb-1 ${metric.color}`}>
+                        {metric.icon}
+                      </div>
+                      <div className={`text-lg font-bold font-cyber ${metric.color}`}>
+                        {metric.value}
+                      </div>
+                      <div className="text-xs text-gray-400 font-tech">
+                        {metric.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
                 
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-6">
@@ -131,7 +193,7 @@ export const Projects = () => {
                       className="flex items-center gap-2 px-4 py-2 glass-effect text-neon-green font-tech font-semibold rounded-lg border border-neon-green/50 hover:bg-neon-green/10 hover:scale-105 transition-all duration-300"
                     >
                       <Github className="w-4 h-4" />
-                      Code
+                      View Code
                     </a>
                   )}
                 </div>
@@ -166,9 +228,23 @@ export const Projects = () => {
                 <p className="text-gray-400 font-tech text-sm mb-3">
                   {project.description}
                 </p>
+
+                {/* Mini Metrics */}
+                <div className="grid grid-cols-3 gap-2 mb-3">
+                  {project.metrics.slice(0, 3).map((metric, idx) => (
+                    <div key={idx} className="text-center">
+                      <div className={`text-sm font-bold font-cyber ${metric.color}`}>
+                        {metric.value}
+                      </div>
+                      <div className="text-xs text-gray-500 font-tech">
+                        {metric.label}
+                      </div>
+                    </div>
+                  ))}
+                </div>
                 
                 <div className="flex flex-wrap gap-1 mb-3">
-                  {project.tech.slice(0, 3).map((tech) => (
+                  {project.tech.slice(0, 4).map((tech) => (
                     <span 
                       key={tech}
                       className="px-2 py-1 bg-neon-green/10 text-neon-green text-xs font-tech rounded-full"
